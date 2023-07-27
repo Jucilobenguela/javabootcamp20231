@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04517933-61f4-4c89-af3a-58e3ee1de0ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Sims_Game/src/academy/mindswap/server/ServerLauncher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sims_Game/src/client/Client.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sims_Game/src/exception/PlayerConnectionDownException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Assets/Assets.java" beforeDir="false" />
@@ -35,6 +34,7 @@
       <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/player/PlayerHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sims_Game/src/util/Messages.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../hangman-project" beforeDir="false" afterPath="$PROJECT_DIR$/../hangman-project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
