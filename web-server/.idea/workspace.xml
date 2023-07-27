@@ -5,21 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04517933-61f4-4c89-af3a-58e3ee1de0ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Game_Sims/src/Commands/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Activity/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Activity/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Activity/Eating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Activity/Eating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Activity/Working.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Activity/Working.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Assets/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Assets/Assets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Assets/House/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Assets/House/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Assets/House/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Assets/House/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Assets/Vehicle/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Assets/Vehicle/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Enums/ActivityEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Commands/ActivityEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Enums/Car_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Commands/Car_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Enums/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Commands/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Enums/TypeHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Commands/TypeHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Game/SimsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Game/SimsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game_Sims/src/Player/SimsCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game_Sims/src/Player/SimsCharacter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Sims_Game/src/academy/mindswap/server/ServerLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/client/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/exception/PlayerConnectionDownException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Assets/Assets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Assets/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Assets/House/House.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Assets/House/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/ServerLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/activity/Eat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/activity/Gym.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/activity/Sleep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/activity/Work.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandAssets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandCar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandGym.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandHouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandNotFoundHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandPrint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandSleep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandStatistic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandWork.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/CommandoEat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/command/QuitHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/game/SimGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/server/player/PlayerHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sims_Game/src/util/Messages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hangman-project" beforeDir="false" afterPath="$PROJECT_DIR$/../hangman-project" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +52,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Meus Cursos/curso de java/Curso de Java Mindera/academy.mindswap/web-server"
+    "last_opened_file_path": "D:/Meus Cursos/curso de java/Curso de Java Mindera/javabootcamp20231/web-server"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
