@@ -7,6 +7,7 @@ public enum Command {
     QUIT("/quit", new QuitHandler()),
     PRINT_COMMAND("/print_command", new CommandPrint()),
     SLEEP("/sleep", new CommandSleep()),
+    WAKEUP("/wakeup", new CommandWakeUP()),
     PRINT_STATISTIC("/statistic",new CommandStatistic()),
     NOT_FOUND("Command not found", new CommandNotFoundHandler()),
     LIST_ASSETS("/list_assents", new CommandAssets()),
@@ -45,6 +46,9 @@ public enum Command {
             descriptio.add(command.description);
         }
         return descriptio;
+    }
+    public String getDescription(){
+        return  description;
     }
 }
 

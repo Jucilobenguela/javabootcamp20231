@@ -1,26 +1,27 @@
 package academy.mindswap.server.game;
 import academy.mindswap.server.command.Command;
 import academy.mindswap.exception.PlayerConnectionDownException;
-import academy.mindswap.server.player.PlayerHandler;
+import academy.mindswap.server.player.SimPlayer;
 import academy.mindswap.util.Messages;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SimGame implements Runnable {
 
-    private final List<PlayerHandler> playerHandlers;
+    private final List<SimPlayer> simPlayers;
     private boolean isGameStarted;
-    public SimGame() {
-        playerHandlers = new CopyOnWriteArrayList<>();
+    public SimGame()
+    {
+        simPlayers = new CopyOnWriteArrayList<>();
     }
     @Override
     public void run() {
-        playerHandlers.forEach(playerHandler -> new Thread(playerHandler).start());
+        simPlayers.forEach(simPlayer -> new Thread(simPlayer).start());
         isGameStarted = true;
-        playerHandlers.forEach(PlayerHandler::setGameOn);
+        simPlayers.forEach(SimPlayer::setGameOn);
         broadcast(Messages.GAME_STARTED_MESSAGE);
         while (isGameStarted) {
-            playerHandlers.forEach(
+            simPlayers.forEach(
                     playerHandler -> {
                         try {
                             receivePlayerInput(playerHandler);
@@ -31,21 +32,21 @@ public class SimGame implements Runnable {
             );
         }
     }
-    private void receivePlayerInput(PlayerHandler playerHandler) throws PlayerConnectionDownException {
+    private void receivePlayerInput(SimPlayer simPlayer) throws PlayerConnectionDownException {
         String reply;
-        while (playerHandler.hasMessage()) {
-            reply = playerHandler.getMessage();
-            System.out.println(Messages.PLAYER_INPUT_TO_SERVER + playerHandler.getName() + " "  +  reply);
+        while (simPlayer.hasMessage()) {
+            reply = simPlayer.getMessage();
+            System.out.println(Messages.PLAYER_INPUT_TO_SERVER + simPlayer.getName() + " "  +  reply);
             try {
-                dealWithCommand(playerHandler.getMessage(), playerHandler);
+                dealWithCommand(simPlayer.getMessage(), simPlayer);
             } catch (PlayerConnectionDownException e) {
                 throw new PlayerConnectionDownException(Messages.CLIENT_ERROR);
             }
-            playerHandler.setHasMessageToRead(false);
+            simPlayer.setHasMessageToRead(false);
         }
     }
 
-    private void dealWithCommand(String message, PlayerHandler playerHandler) throws PlayerConnectionDownException {
+    private void dealWithCommand(String message, SimPlayer simPlayer) throws PlayerConnectionDownException {
         String description = message.split(" ")[0];
         Command command = Command.getCommandFromDescription(description);
 
@@ -53,8 +54,8 @@ public class SimGame implements Runnable {
             command = Command.NOT_FOUND;
         }
 
-        if (playerHandler != null) {
-            command.getHandler().execute(this, playerHandler);
+        if (simPlayer != null) {
+            command.getHandler().execute(this, simPlayer);
         } else {
             command.getHandler().execute(this, null);
         }
@@ -63,13 +64,13 @@ public class SimGame implements Runnable {
         isGameStarted = gameStarted;
     }
     public void broadcast(String message) {
-        playerHandlers
+        simPlayers
                 .forEach(handler -> handler.send(message));
     }
-    public void addPlayer(PlayerHandler playerHandler) {
-        playerHandlers.add(playerHandler);
-        playerHandler.send(Messages.WELCOME.formatted(playerHandler.getName()));
-        playerHandler.send(Command.Description().toString());
+    public void addPlayer(SimPlayer simPlayer) {
+        simPlayers.add(simPlayer);
+        simPlayer.send(Messages.WELCOME.formatted(simPlayer.getName()));
+        simPlayer.send(Command.Description());
     }
 }
 
