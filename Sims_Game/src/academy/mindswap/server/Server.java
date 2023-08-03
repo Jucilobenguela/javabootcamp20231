@@ -1,6 +1,6 @@
 package academy.mindswap.server;
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

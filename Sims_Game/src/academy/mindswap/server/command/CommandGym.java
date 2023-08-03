@@ -3,7 +3,7 @@ package academy.mindswap.server.command;
 
 import academy.mindswap.server.activity.Gym;
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 import academy.mindswap.util.Messages;
 
 public class CommandGym implements CommandHandler {
@@ -19,6 +19,8 @@ public class CommandGym implements CommandHandler {
             simPlayer.send(Messages.PLAYER_SLEEPING);
             return;
         }
-        simPlayer.goToGym(gym);
+        if (!simPlayer.getIsEat()){
+            simPlayer.goToGym(gym);
+        }
     }
 }

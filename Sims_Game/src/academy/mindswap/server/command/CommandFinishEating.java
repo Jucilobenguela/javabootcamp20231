@@ -1,17 +1,15 @@
 package academy.mindswap.server.command;
 
-
 import academy.mindswap.server.game.SimGame;
 import academy.mindswap.server.game.player.SimPlayer;
 import academy.mindswap.util.Messages;
 
-public class CommandAssets implements CommandHandler {
+public class CommandFinishEating implements CommandHandler {
     @Override
     public void execute(SimGame game, SimPlayer simPlayer) {
-        if (!simPlayer.hasHouse()) {
-            simPlayer.send(Messages.ERR_FIRST_HOUSE);
-            return;
+        if (simPlayer.getIsEat()){
+            simPlayer.finishEating();
+            simPlayer.send(Messages.FINISH_EATING);
         }
-        simPlayer.printsAssents();
     }
 }

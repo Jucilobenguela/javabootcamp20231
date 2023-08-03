@@ -1,7 +1,7 @@
 package academy.mindswap.server.activity;
 
 public class Eat {
-    public int eat(){
-        return 50;
+    public int eat(int life){
+        return life + 50;
     }
 }

@@ -1,7 +1,7 @@
 package academy.mindswap.server.command;
 
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 
 public class CommandWakeUP implements CommandHandler {
     @Override

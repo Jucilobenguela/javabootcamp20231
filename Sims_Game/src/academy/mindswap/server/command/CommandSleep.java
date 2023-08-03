@@ -2,7 +2,7 @@ package academy.mindswap.server.command;
 
 import academy.mindswap.server.activity.Sleep;
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 import academy.mindswap.util.Messages;
 
 public class CommandSleep implements CommandHandler {
@@ -17,7 +17,8 @@ public class CommandSleep implements CommandHandler {
             simPlayer.send(Messages.ERR_FIRST_HOUSE);
             return;
         }
-        simPlayer.sleep(sleep);
-
+        if(!simPlayer.getIsInGym() && !simPlayer.getIsEat()) {
+            simPlayer.sleep(sleep);
+        }
     }
 }

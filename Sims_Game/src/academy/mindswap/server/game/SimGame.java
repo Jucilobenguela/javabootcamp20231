@@ -1,7 +1,7 @@
 package academy.mindswap.server.game;
 import academy.mindswap.server.command.Command;
 import academy.mindswap.exception.PlayerConnectionDownException;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 import academy.mindswap.util.Messages;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

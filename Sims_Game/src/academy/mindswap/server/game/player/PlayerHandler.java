@@ -1,4 +1,4 @@
-package academy.mindswap.server.player;
+package academy.mindswap.server.game.player;
 
 import academy.mindswap.server.command.Command;
 import academy.mindswap.util.Messages;
@@ -12,14 +12,12 @@ import java.util.Scanner;
 
 public class PlayerHandler {
     private String name;
-   // private final Socket playerSocket;
     private final BufferedWriter out;
     private final Scanner in;
     private boolean hasMessageToRead;
     private boolean isGameOn;
 
     public PlayerHandler(Socket playerSocket) throws IOException {
-        //this.playerSocket = playerSocket;
         this.out = new BufferedWriter(new OutputStreamWriter(playerSocket.getOutputStream()));
         this.in = new Scanner(playerSocket.getInputStream());
     }
@@ -49,13 +47,13 @@ public class PlayerHandler {
                 }
     }
 
-  /*  public void close() {
+  public void close(Socket playerSocket) {
         try {
             playerSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     public String getName() {
         return name;
