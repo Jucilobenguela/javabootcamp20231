@@ -15,6 +15,8 @@ public enum Command {
     BUY_CAR("/buy_car", new CommandCar()),
     WORK("/work", new CommandWork()),
     GYM("/gym", new CommandGym()),
+    LEAVE_GYM("/leave_gym", new CommandLeaveGym()),
+    FINISH_EATING("/finish_eating", new CommandFinishEating()),
     EAT("/eat", new CommandoEat());
 
     private String description;

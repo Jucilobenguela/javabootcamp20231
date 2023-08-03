@@ -1,4 +1,4 @@
-package academy.mindswap.server.player;
+package academy.mindswap.server.game.player;
 
 import academy.mindswap.server.Assets.Assets;
 import academy.mindswap.server.Assets.Car;
@@ -14,24 +14,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimPlayer implements Runnable {
-    PlayerHandler playerHandler;
+    private PlayerHandler playerHandler;
     private boolean isHasHouse;
     private boolean isAwakeUp;
     private boolean isGameOn;
+    private boolean isInGym;
     private final Socket socket;
     private String message;
     private List<Assets> assetsList;
     private int levelLife;
     private int money;
+    private boolean isEat;
 
     public SimPlayer(Socket playerSocket) throws IOException {
         this.socket = playerSocket;
         this.playerHandler = new PlayerHandler(playerSocket);
         this.assetsList = new ArrayList<>();
-       this.levelLife = 100;
+        this.levelLife = 100;
         this.money = 1000;
         this.isAwakeUp=true;
         this.isHasHouse=false;
+        this.isInGym=false;
+        this.isEat=false;
     }
     public boolean hasHouse() {
         if (isHasHouse == true) {
@@ -43,16 +47,16 @@ public class SimPlayer implements Runnable {
     public void buyHouse() {
         House house = new House();
         if (money <house.priceHouse()) {
-            playerHandler.send(Messages.NO_MONEY);
+            send(Messages.NO_MONEY);
             return;
         }
         if (isHasHouse) {
-            playerHandler.send(Messages.BUY_HOUSE_ERR);
+            send(Messages.BUY_HOUSE_ERR);
             return;
         }
         isHasHouse = true;
         assetsList.add(house);
-        playerHandler.send(Messages.BUY_HOUSE);
+        send(Messages.BUY_HOUSE);
     }
 
     private boolean isCommand(String message) {
@@ -60,11 +64,7 @@ public class SimPlayer implements Runnable {
     }
 
     public void close() {
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       playerHandler.close(socket);
     }
 
     public String getName() {
@@ -82,12 +82,22 @@ public class SimPlayer implements Runnable {
     public int getMoney() {
         return money;
     }
-
-    public void printLevelLife() {
-
-        playerHandler.send("Nivel de vida: " + levelLife);
+    public boolean getIsHasHouse() {
+        return isHasHouse;
+    }
+    public boolean getIsInGym(){
+        return isInGym;
+    }
+    public int getLevelLife() {
+        return levelLife;
+    }
+    public boolean getIsEat() {
+        return isEat;
     }
 
+    public void printLevelLife() {
+        send(Messages.LEVEL_LIFE + levelLife);
+    }
     @Override
     public void run() {
         while (playerHandler.hasNext()) {
@@ -98,48 +108,48 @@ public class SimPlayer implements Runnable {
         }
     }
     public void printsAssents() {
-        assetsList.forEach(asset -> playerHandler.send(asset.getClass().getSimpleName()));
+        if (assetsList.isEmpty()){
+            send(Messages.ANY_ASSETS);
+            return;
+        }
+        assetsList.forEach(asset -> send(asset.getClass().getSimpleName()));
     }
-    public void buyCar() {
-        Car car = new Car();
-        if (!isHasHouse) {
-            playerHandler.send(Messages.ERR_FIRST_HOUSE);
-            return;
-        }
-        if (money < car.getPrice()) {
-            playerHandler.send(Messages.NO_MONEY);
-            return;
-        }
+    public void buyCar(Car car) {
+        send(Messages.BUY_CAR);
         assetsList.add(car);
         levelLife = car.tirednessLevel(levelLife);
         money = money - car.getPrice();
     }
 
-    public void eat() {
-        Eat eat = new Eat();
-        this.levelLife = eat.eat();
-        playerHandler.send("comeu");
+    public void eat(Eat eat) {
+        this.levelLife = eat.eat(levelLife);
+        isEat=true;
+        send(Messages.EATING);
+    }
+    public void finishEating(){
+        isEat=false;
     }
     public void work(Work work) {
         levelLife = work.tirednessLevel(levelLife);
         this.money = work.reward(money);
-        playerHandler.send(Messages.WON_MONEY.formatted(work.getSalary()));
+        send(Messages.WON_MONEY.formatted(work.getSalary()));
         printMoney();
     }
     public void goToGym(Gym gym) {
         levelLife = gym.tirednessLevel(levelLife);
-        playerHandler.send("exercitando");
+        send(Messages.IN_GYM);
+        isInGym=true;
+    }
+    public void leaveTheGym(){
+        isInGym = false;
     }
     public void printMoney() {
-        playerHandler.send("dinheiro total: " + money);
+        send("dinheiro total: " + money);
     }
     public void sleep(Sleep sleep) {
         levelLife = sleep.restLeve(levelLife);
-        playerHandler.send("zzzzzzzz");
+        send("zzzzzzzz");
         isAwakeUp=false;
-    }
-    public int getLevelLife() {
-        return levelLife;
     }
     public boolean isAwakeUp(){
         if(!isAwakeUp){
@@ -147,8 +157,7 @@ public class SimPlayer implements Runnable {
         }
         return true;
     }
-    public void wakeUp()
-    {
+    public void wakeUp() {
         isAwakeUp=true;
     }
     public void addName(){

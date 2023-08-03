@@ -3,7 +3,7 @@ package academy.mindswap.server.command;
 
 import academy.mindswap.server.activity.Work;
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.SimPlayer;
+import academy.mindswap.server.game.player.SimPlayer;
 import academy.mindswap.util.Messages;
 
 public class CommandWork implements CommandHandler {
