@@ -19,6 +19,7 @@ public abstract class Messages {
     public static final String BUY_CAR = "Successfully bought car: ";
     public static final String LIVE_LOW = " Low standard of living";
     public static final String WON_MONEY = "Congratulations, you Won %s Eur";
+    public static final String PLAYER_SLEEPING = "Player is sleeping";
 
 
     public static final String NO_MONEY = "You don´t have enough money, you need to work first!";

@@ -1,6 +1,6 @@
 package academy.mindswap.server;
 import academy.mindswap.server.game.SimGame;
-import academy.mindswap.server.player.PlayerHandler;
+import academy.mindswap.server.player.SimPlayer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -24,14 +24,14 @@ public class Server {
     }
     public void acceptConnection() throws IOException {
         Socket clientSocket = serverSocket.accept();
-        PlayerHandler playerHandler = new PlayerHandler(clientSocket);
-        playerHandler.addName();
-        addPlayerToGame(simGame,playerHandler);
+        SimPlayer simPlayer = new SimPlayer(clientSocket);
+        simPlayer.addName();
+        addPlayerToGame(simGame, simPlayer);
         startGameInstance(simGame);
     }
-    private void addPlayerToGame(SimGame simGame, PlayerHandler playerHandler) {
+    private void addPlayerToGame(SimGame simGame, SimPlayer simPlayer) {
         if (simGame != null) {
-            simGame.addPlayer(playerHandler);
+            simGame.addPlayer(simPlayer);
         }
     }
     private void startGameInstance(SimGame simGame) {
